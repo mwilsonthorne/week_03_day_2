@@ -10,6 +10,7 @@ class Bounty
     @species = cargo['species']
     @bounty_value = cargo['bounty_value']
     @homeworld = cargo['homeworld']
+    @id = cargo['id']
   end
 
   def save
@@ -79,15 +80,18 @@ class Bounty
     return bounty_cargo
 
   end
-  #
-  # def Bounty.remove_all()
-  #   db - PG.connect ( {dbname: 'bounty_hunter', host: 'localhost'} )
-  #
-  #   cargo_sql = "DELETE FROM bountys;"
-  #   db.prepare('del_all_cargo', cargo_sql)
-  #   db.exec_prepared('del_all_cargo')
-  #
-  # end
+
+  def Bounty.delete_all()
+    db = PG.connect ( {dbname: 'bounty_hunter', host: 'localhost'} )
+
+    cargo_sql = "DELETE FROM bountys;"
+
+    db.prepare('del_all_cargo', cargo_sql)
+    db.exec_prepared('del_all_cargo')
+
+    db.close()
+
+  end
 
 
 

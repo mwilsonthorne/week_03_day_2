@@ -30,3 +30,8 @@ puts ""
 first_catch.delete()
 
 p Bounty.all()
+puts ""
+
+Bounty.delete_all()
+
+p Bounty.all()
